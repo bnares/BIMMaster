@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Document</title>
+</head>
+<body>
+    <aside id="sidebar">
+        <img id="company-logo" src="./assets/company-logo.svg" alt="Construction company">
+        <ul id="nav-buttons">
+            <li id="projectsList-button">
+                <span class="material-symbols-outlined">
+                    apartment
+                </span>
+                Projects
+            </li>
+            <li>
+                Users
+            </li>
+        </ul>
+    </aside>
+    <main id="content">
+        <div class="page" id="projects-page">
+            <dialog id="error-project-modal">
+                <div class="alert-modal">
+                    <!-- <button type="button" id="alertClosebtn" >&times;</button>
+                    This is an alert box. -->
+                </div>
+            </dialog>
+            <dialog id="new-project-modal">
+                <form id="new-project-form">
+                    <h2>New Project</h2>
+                    <div class="input-list">
+                        <div class="form-field-container">
+                            <label for="name" style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    location_city
+                                </span>
+                                Name
+                            </label>
+                            <input type="text" name="name" placeholder="Whts the name of your project?">
+                            <div id="input-tip">
+                                TIP Give it short name
+                            </div>
+                        </div>
+                        <div class="form-field-container">
+                            <label for="description" style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    summarize
+                                </span>
+                                Description
+                            </label>
+                            <textarea name="description" cols="30" rows="5" placeholder="Add Description of project"></textarea>
+                        </div>
+                        <div class="form-field-container">
+                            <label for="userRole" style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                                Role
+                            </label>
+                            <select name="userRole">
+                                <option>Architect</option>
+                                <option>Engineer</option>
+                                <option>Developer</option>
+                            </select>
+                        </div>
+                        <div class="form-field-container">
+                            <label for="status" style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    help
+                                </span>
+                                Status
+                            </label>
+                            <select name="status">
+                                <option>Pending</option>
+                                <option>Active</option>
+                                <option>Finished</option>
+                            </select>
+                        </div>
+                        <div class="form-field-container">
+                            <label for="finishDate" style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>
+                                Date
+                            </label>
+                            <input name="finishDate" type="date">
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 5px; padding: 10px;">
+                        <button id="cancel-new-project-button" type="button" class="form-cancel-button">Cancel</button>
+                        <button type="submit" class="form-confirm-button">Accept</button>
+                    </div>
+                </form>
+            </dialog>
+            <header id="page-header">
+                <h2>Projects</h2>
+                <div style="display: flex; align-items: center; justify-items: center; column-gap: 15px;">
+                    <span id="import-projects-btn" class="material-symbols-outlined">
+                        upload
+                    </span>
+                    <span id="export-projects-btn" class="material-symbols-outlined">
+                        download
+                    </span>
+                    <button id="new-project-button">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                        New Project
+                    </button>
+                </div>
+            </header>
+            <div id="projects-list">
+                <!-- here goes projects card div managed by ProjectManager class -->
+               
+            </div>
+        </div>
+       <div class="page" id="project-details" style="display: none;">
+            <header>
+                <div>
+                    <h2>Hospital Center</h2>
+                    <p style="color: #969696;">Community hospital at downtown</p>
+                </div>
+            </header>
+            <div class="main-page-content">
+                <div style="display: flex; flex-direction: column; row-gap: 10px;">
+                    <div style="flex-grow: 1;" class="dashboard-card">
+
+                        <div class="project-info">
+                            <div id="project-info-header">
+                                <div style="border-radius: 50%; background-color: #ca8134; padding: 10px;">HC</div>
+                                <button id="project-info-button">Edit</button>
+                            </div>
+                            <div id="project-info-title">
+                                <h5>Hospital Center</h5>
+                                <p style="font-size: x-small;">Community hospital at downtown</p>
+                            </div>
+                            <div id="project-info-description">
+                                <div>
+                                    <p style="font-size: xx-small; color: #969696;">Status</p>
+                                    <div style="font-size: x-small;">Active</div>
+                                </div>
+                                <div>
+                                    <p style="font-size: xx-small; color: #969696;">Cost</p>
+                                    <div style="font-size: x-small;">$12345678</div>
+                                </div>
+                                <div>
+                                    <p style="font-size: xx-small; color: #969696;">Role</p>
+                                    <div style="font-size: x-small;">Engineer</div>
+                                </div>
+                                <div>
+                                    <p style="font-size: xx-small; color: #969696;">Fresh Date</p>
+                                    <div style="font-size: x-small;">2023-11-21</div>
+                                </div>
+                                <div style="background-color: #404040; border-radius: 9999px; overflow: auto; width: 100%; margin-top: 10px;">
+                                    <div style="width: 80%; background-color: green; padding: 2px 0; text-align: center;">80%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex-grow: 3; row-gap: 10px;" class="dashboard-card">
+                        <div style="display: flex; column-gap: 10px; justify-content: space-between;align-items: center; width: 100%;">
+                            <p style="font-size: small; min-width: 40px;">To-do</p>
+                            <div style="display: flex;column-gap: 5px; justify-content: center; align-items: center;">
+                                <span style="font-size: large;" class="material-symbols-outlined">
+                                    search
+                                </span>
+                                <input style="width: 100%;" type="text" placeholder="Seaarch by Name">
+                                <span style="font-size:large;" class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </div>
+                        
+                        </div>
+                        <div class="to-do-settings">
+                            <div style="background-color: #969696; padding: 5px; border-radius: 4px;">
+                                <span class="material-symbols-outlined">
+                                    construction
+                                </span>
+                            </div>
+                            <div style="display: flex;  justify-content: space-between; align-items: center; padding: 5px; cursor: pointer;">
+                                <p style="font-size:x-small; flex-grow: 2;">Make anuthing as you want, even something longer</p>
+                                <p style="font-size:xx-small; flex-grow: 1;">Fri, 20 sep</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="viewer-container" class="dashboard-card"></div>
+            </div>
+       
+       </div>
+       <div class="page" id="project-user" style="display: none;">
+            <dialog id="add-user-modal">
+                <form>
+                    <h2>New User</h2>
+                    <div class="input-list">
+                        <div class="form-field-container">
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    person
+                                </span>
+                                Name
+                            </label>
+                            <input type="text" placeholder="Name">
+                        </div>
+                        <div class="form-field-container">
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    person
+                                </span>
+                                Surname
+                            </label>
+                            <input type="text" placeholder="Surname">
+                            
+                        </div>
+                        <div class="form-field-container">
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                                Role
+                            </label>
+                            <select>
+                                <option>Architect</option>
+                                <option>Engineer</option>
+                                <option>Developer</option>
+                            </select>
+                        </div>
+                        <div class="form-field-container">
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined">
+                                    perm_media
+                                </span>
+                                Photo
+                            </label>
+                            <input type="file" placeholder="Photo">
+                            
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 5px; padding: 10px;">
+                        <button class="form-cancel-button">Cancel</button>
+                        <button class="form-confirm-button">Accept</button>
+                    </div>
+                </form>
+            </dialog>
+            <header style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; row-gap: 20px;">
+                <h1>Manage Users</h1>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    
+                    <button style="display: flex; justify-content: center; align-items: center; column-gap: 5px;">
+                        <span class="material-symbols-outlined" style="outline: dotted 1px; border-radius: 50%; padding: 5px;">
+                            person_add
+                        </span>
+                        Add User
+                    </button>
+                </div>
+            </header>
+            <div id="users-list">
+                <div style="display: flex; align-items: center; outline: 1px solid; border-radius: 5px; background-color: #3b3c3f; width: 30%; margin-bottom: 30px;">
+                    <span class="material-symbols-outlined" style="padding: 2px 5px;">
+                        search
+                    </span>
+                    <input id="input-search-users" style="background-color: #3b3c3f; width: 100%;"  type="text" placeholder="Enter user name">
+                </div>
+                <div style="border-bottom: 1px dotted gray; border-top: 1px dotted gray; padding: 10px 5px; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; column-gap: 10px; align-items: center;">
+                        <div style="padding: 10px; height: 50px; width: 50px;object-fit: cover;  border-radius: 50%;">
+                            <img style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" src="assets/ja.jpg" alt="Usr photo">
+                        </div>
+                        <div>
+                            <h5>Piotr Ostrouch</h5>
+                            <p>Engineer</p>
+                        </div>
+                    </div>
+                    <button style="cursor: pointer; background-color: transparent; outline: 1px solid red; display: flex; justify-content: center; align-items: center;">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                        Remove User
+                    </button>
+                </div>
+
+                <div style="border-bottom: 1px dotted gray; border-top: 1px dotted gray; padding: 10px 5px; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; column-gap: 10px; align-items: center;">
+                        <div style="padding: 10px; height: 50px; width: 50px;object-fit: cover;  border-radius: 50%;">
+                            <img style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" src="assets/ja.jpg" alt="Usr photo">
+                        </div>
+                        <div>
+                            <h5>Piotr Ostrouch</h5>
+                            <p>Engineer</p>
+                        </div>
+                    </div>
+                    <button style="cursor: pointer; background-color: transparent; outline: 1px solid red; display: flex; justify-content: center; align-items: center;">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                        Remove User
+                    </button>
+                </div>
+            </div>
+       </div>
+    </main>
+    <script type="module" src="./src/index.ts"></script> 
+    <!-- type is module becouse in index.js file we are importing Project class if we import some file we must add type = module which menas we are using separete files -->
+</body>
+</html>
