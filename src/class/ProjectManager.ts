@@ -21,10 +21,54 @@ export class ProjectsManager{
             if(projectPage==null || projectdetails==null) return;
             projectPage.style.display = "none";
             projectdetails.style.display= "flex"
+            this.setDetailPage(project);
         })
         this.ui.append(project.ui)
         this.list.push(project)
         return project
+    }
+
+    private setDetailPage(project : Project){
+        const detailsPage = document.getElementById("project-details");
+        if(!detailsPage) return;
+        const name = detailsPage.querySelector("[data-project-info='name']");
+        if(name) name.textContent = project.name;
+        const desc = detailsPage.querySelector("[data-project-description='desc']");
+        if(desc) desc.textContent = project.description;
+        const title = detailsPage.querySelector("[data-project-title='name']");
+        if(title) title.textContent = project.name;
+        const cardDesc = detailsPage.querySelector("[data-project-description='cardDesc']");
+        if(cardDesc) cardDesc.textContent = project.description;
+        const status = detailsPage.querySelector("[data-project-status='status']");
+        if(status) status.textContent = project.status;
+        const cost = detailsPage.querySelector("[data-project-cost='cost']");
+        if(cost) cost.textContent = "$"+project.cost;
+        const role = detailsPage.querySelector("[data-project-role='role']");
+        if(role) role.textContent=project.userRole;
+        const date = detailsPage.querySelector("[data-project-date='date']");
+        if(date) date.textContent = this.formatDate(project.finishDate);
+        const progress = detailsPage.querySelector("[data-project-progress='progress']");
+        if(progress) {
+            progress.textContent = project.progress.toString()+"%";
+            const progressElement = document.getElementById("data-progress") as HTMLElement;
+            if(progressElement) progressElement.style.width = ` ${project.progress.toString()}%`;
+
+        }
+
+    }
+
+    private formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
     }
 
    createDefaultProject(){
