@@ -24,11 +24,14 @@
     margin: 0;
     padding: 0;
 }
-body{
+
+
+#app{
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-areas: 'sidebar content';
     height: 100vh;
+    
     background-color: var(--background);
     color: #fff;
 }
@@ -87,6 +90,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     height: 100%;
+    
 }
 
 /* Sidebar style */
@@ -329,11 +333,12 @@ dialog::backdrop{
 .to-do-settings{
     display: flex; 
     width: 100%; 
-    justify-content: center;
+    justify-content: space-between;
     align-items: center; 
     background-color: #3b3c3f; 
     padding: 10px 5px; 
     border-radius: 5px;
+    margin-bottom: 3px;
 }
 .to-do-settings:hover{
     background-color: var(--primary);
@@ -407,12 +412,59 @@ dialog::backdrop{
 
 
   /* header button */
-  #export-projects-btn, #import-projects-btn{
+  #export-projects-btn, #import-projects-btn, #import-description-btn{
     cursor: pointer;
     padding: 6px;
     border-radius: 50%;
   }
 
-  #export-projects-btn:hover, #import-projects-btn:hover{
+  #export-projects-btn:hover, #import-projects-btn:hover, #import-description-btn:hover{
     background-color: var(--primary);
+  }
+
+/* styling to do list */
+
+  #toDo-add:hover{
+    color: var(--primary);
+  }
+
+  #to-do-list{
+    width: 100%;
+    overflow-y: auto;
+    height: 50%;
+    overflow-x: auto;
+  }
+
+  .to-do-settings.toDoActive{
+    background-color: orange;
+  }
+
+  .to-do-settings.toDoPending{
+    background-color: #ffcccb;
+  }
+
+  .to-do-settings.toDoFinished{
+    background-color: green;
+  }
+
+  #viewer-container{
+    width: 100vh;
+  }
+
+  .todo-item{
+    padding: 20px;
+    outline: 2px solid var(--background-200);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .todo-item:hover{
+    background-color: #26282b;
+    outline: 2px solid var(--primary);
+  }
+
+  .qunatity-card{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
